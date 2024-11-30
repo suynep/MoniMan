@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Hero Section -->
+<section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="text-center">
+        <h1 class="gradient-text">MoniMan</h1>
+        <h2>A simple yet modern money management application</h2>
+        <a href="{{ url_for('signup') }}" class="btn btn-primary mt-3">Get Started</a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section-padding">
+    <div class="container">
+        <h2 class="text-center gradient-text">About MoniMan</h2>
+        <p class="lead text-center">
+            Take control of your finances with MoniMan! Track expenses, set budgets, and gain valuable insights.
+            Your journey to financial freedom starts here.
+        </p>
+        <div class="row text-center mt-4">
+            <div class="col-md-4">
+                <i class="fas fa-chart-line fa-3x mb-3"></i>
+                <h3>Track Expenses</h3>
+                <p>Easily monitor your spending habits and identify areas to save.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-wallet fa-3x mb-3"></i>
+                <h3>Set Budgets</h3>
+                <p>Plan your finances effectively by setting personalized budgets.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-lightbulb fa-3x mb-3"></i>
+                <h3>Gain Insights</h3>
+                <p>Analyze your financial data to make smarter decisions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Created By Section -->
+<section id="created-by" class="section-padding bg-light">
+    <div class="container text-center">
+        <h2 class="gradient-text">Created By</h2>
+        <p>
+            Developed by <a href="https://github.com/suynep" target="_blank">suynep</a>
+        </p>
+        <a href="https://github.com/suynep" target="_blank"><i class="fab fa-github fa-3x"></i></a>
+    </div>
+</section>
+
+{% endblock %}

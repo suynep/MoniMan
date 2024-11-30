@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MoniMan</title>
+    <!-- Bootstrap CSS -->
+    <link
+      id="theme-stylesheet"
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="{{ url_for('home') }}">MoniMan</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+          </li>
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('signup') }}">Signup</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <div class="custom-control custom-switch mt-2">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="darkModeToggle"
+              />
+              <label class="custom-control-label" for="darkModeToggle"
+                >Dark Mode</label
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container mt-4">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="alert alert-dismissible fade show" role="alert">
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %} {% endwith %} {% block content %}{% endblock %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      const toggle = document.getElementById("darkModeToggle");
+      const stylesheet = document.getElementById("theme-stylesheet");
+
+      // Function to set theme
+      function setTheme(isDark) {
+        if (isDark) {
+          stylesheet.href =
+            "https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css";
+          localStorage.setItem("darkMode", "true");
+        } else {
+          stylesheet.href =
+            "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css";
+          localStorage.setItem("darkMode", "false");
+        }
+      }
+
+      // Initialize theme based on localStorage
+      document.addEventListener("DOMContentLoaded", () => {
+        const darkMode = localStorage.getItem("darkMode") === "true";
+        toggle.checked = darkMode;
+        setTheme(darkMode);
+      });
+
+      // Toggle theme on switch change
+      toggle.addEventListener("change", () => {
+        setTheme(toggle.checked);
+      });
+    </script>
+  </body>
+</html>

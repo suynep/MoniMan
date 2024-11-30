@@ -1,0 +1,90 @@
+{% extends "base.html" %} {% block content %}
+<div class="row">
+  <div class="col-md-3">
+    <h3>Types</h3>
+    <ul class="list-group">
+      {% for type in types %}
+      <li class="list-group-item">{{ type }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <h3>Add New Entry</h3>
+    <form method="POST">
+      <div class="form-group">
+        <label for="source">Source</label>
+        <input
+          type="text"
+          class="form-control"
+          id="source"
+          name="source"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="sink">Sink</label>
+        <input
+          type="text"
+          class="form-control"
+          id="sink"
+          name="sink"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select class="form-control" id="type" name="type" required>
+          <option value="🎮 Entertainment">🎮 Entertainment</option>
+          <option value="🍔 Food">🍔 Food</option>
+          <option value="🚗 Transport">🚗 Transport</option>
+          <option value="💡 Utilities">💡 Utilities</option>
+          <option value="🏥 Healthcare">🏥 Healthcare</option>
+          <option value="📚 Education">📚 Education</option>
+          <option value="🛒 Shopping">🛒 Shopping</option>
+          <option value="🏠 Housing">🏠 Housing</option>
+          <option value="💼 Work">💼 Work</option>
+          <option value="🎉 Entertainment">🎉 Entertainment</option>
+          <option value="🌡️ Miscellaneous">🌡️ Miscellaneous</option>
+          <option value="✨ Others">✨ Others</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Entry</button>
+    </form>
+    {% if entries %}
+    <h3 class="mt-4">Your Entries</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Sink</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in entries %}
+        <tr>
+          <td>{{ entry.source }}</td>
+          <td>{{ entry.sink }}</td>
+          <td>{{ entry.type }}</td>
+          <td>
+            <form
+              method="POST"
+              action="{{ url_for('delete_entry', entry_id=entry.id) }}"
+            >
+              <button type="submit" class="btn btn-danger btn-sm">
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+    <a href="{{ url_for('download_pdf') }}" class="btn btn-secondary mt-3"
+      >Download PDF</a
+    >
+  </div>
+</div>
+{% endblock %}

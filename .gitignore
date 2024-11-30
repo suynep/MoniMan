@@ -1,0 +1,48 @@
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Flask instance and configuration files
+instance/
+*.env
+*.flaskenv
+
+# Database files
+*.sqlite3
+*.db
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# VS Code settings (if you use it)
+.vscode/
+
+# PyCharm settings (if you use it)
+.idea/
+
+# MacOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Log files
+*.log
+
+# Coverage reports
+.coverage
+*.coverage
+
+# Flask migrations folder
+migrations/
+
+# Node.js dependencies (if using a frontend framework like React or others)
+node_modules/
+
+# Admin credentials text file
+admin_credentials.txt
+

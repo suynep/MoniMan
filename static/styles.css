@@ -1,0 +1,95 @@
+body {
+    padding-top: 56px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 2rem 1rem;
+}
+
+.alert {
+    margin-top: 1rem;
+}
+
+.table {
+    margin-top: 1rem;
+}
+
+/* Dark mode custom styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode .jumbotron {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .navbar {
+    background-color: #1f1f1f !important;
+}
+
+.dark-mode .alert {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+/* Gradient Text Animation */
+.gradient-text {
+    background: linear-gradient(45deg, #ff6b6b, #f94d6a, #ff6b6b);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Scroll Snapping */
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+section {
+    scroll-snap-align: start;
+}
+
+/* Section Padding */
+.section-padding {
+    padding: 60px 0;
+}
+
+/* Hero Section Styling */
+#hero {
+    height: 100vh;
+    background: url('{{ url_for('static', filename='images/hero-background.jpg') }}') no-repeat center center/cover;
+    color: #fff;
+}
+
+/* Additional Styles */
+#about, #created-by {
+    text-align: center;
+}
+
+#created-by {
+    background-color: #f8f9fa;
+}
+
+.fa-3x {
+    font-size: 3em;
+    color: #ff6b6b;
+}
+
+.btn-primary {
+    background-color: #ff6b6b;
+    border-color: #ff6b6b;
+}
